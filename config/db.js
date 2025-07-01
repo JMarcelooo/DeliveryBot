@@ -1,4 +1,3 @@
-// db.js (ou no topo do index.js)
 const mongoose = require('mongoose');
 require('dotenv').config()
 
