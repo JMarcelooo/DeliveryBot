@@ -32,13 +32,13 @@ Este é um bot de atendimento automatizado para um **delivery de comida**. O bot
 1. Clone este repositório para sua máquina local:
 
     ```bash
-    git clone https://github.com/seu-usuario/delivery-bot.git
+    git clone https://github.com/JMarcelooo/DeliveryBot
     ```
 
 2. Navegue até o diretório do projeto:
 
     ```bash
-    cd delivery-bot
+    cd DeliveryBot
     ```
 
 3. Instale as dependências:
