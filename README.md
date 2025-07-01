@@ -75,7 +75,8 @@ Este é um bot de atendimento automatizado para um **delivery de comida**. O bot
 ## Estrutura do Projeto
 
 - **`index.js`**: Arquivo principal que inicializa o bot e o servidor.
+- **`config/`**: Arquivos de configuração para elementos da aplicação, tal como a conexão com o DB
 - **`controllers/`**: Controladores responsáveis pela lógica do bot, como pedidos e reservas.
 - **`models/`**: Modelos do MongoDB para armazenar informações sobre pedidos e reservas.
 - **`util/`**: Funções auxiliares, como a geração de áudio usando a API do Google TTS.
-- **`audios/`**: Pasta para armazenar os arquivos de áudio gerados.
+- **`seeds/`**: Funções para o preenchimento do banco de dados, com itens do cardápio e mesas para reserva.
