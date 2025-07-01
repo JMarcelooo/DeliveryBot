@@ -1,0 +1,12 @@
+
+audios/
+
+
+.env
+
+
+chave-gcp.json
+
+package-lock.json
+
+node_modules/
