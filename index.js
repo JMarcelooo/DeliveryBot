@@ -24,7 +24,7 @@ venom
 function start(client) {
   client.onMessage(async (message) => {
     const userId = message.from;
-    const numeroAutorizado = '558491836284@c.us';
+    const numeroAutorizado = '558496345257@c.us';
 
     if (userId !== numeroAutorizado) {
       console.log('Número não autorizado:', userId);

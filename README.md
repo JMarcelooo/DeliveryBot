@@ -66,9 +66,11 @@ Este é um bot de atendimento automatizado para um **delivery de comida**. O bot
     node index.js
     ```
 
-2. O bot se conectará ao **WhatsApp Web** e estará pronto para interagir com os usuários. 💬
+2. Ir no index.js e alterar a constante **numeroAutorizado** para o número autorizado para mandar as mensagens.
 
-3. Envie uma mensagem para o bot no WhatsApp para começar o atendimento! 📱
+3. O bot se conectará ao **WhatsApp Web** e estará pronto para interagir com os usuários. 💬
+
+4. Envie uma mensagem para o bot no WhatsApp para começar o atendimento! 📱
 
 ---
 
