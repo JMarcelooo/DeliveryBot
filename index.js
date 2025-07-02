@@ -24,7 +24,7 @@ venom
 function start(client) {
   client.onMessage(async (message) => {
     const userId = message.from;
-    const numeroAutorizado = '558496345257@c.us';
+    const numeroAutorizado = '558491836284@c.us';
 
     if (userId !== numeroAutorizado) {
       console.log('Número não autorizado:', userId);
@@ -152,14 +152,24 @@ function start(client) {
       case 5:
         userSession.pedido.pagamento = message.body.trim();
 
+        
         let total = 0;
         userSession.pedido.itens.forEach(item => {
           total += item.quantidade * item.precoUnitario;
         });
         userSession.pedido.valorTotal = total;
 
-        const resumo = listarPedido(userSession.pedido);
-        await client.sendText(userId, resumo);
+        const listaDeItens = userSession.pedido.itens
+          .map(item => `${item.quantidade} ${item.nome}`)
+          .join(', ');
+        const textoAudio = `Pedido confirmado! Você pediu ${listaDeItens} com valor total de R$${total}.`;
+
+        const audioPath = await gerarAudio(textoAudio, `pedido_${userId}`);
+
+        await client.sendText(userId, `🎉 Aqui está o resumo do seu pedido:\n ${listaDeItens} \n Total R$${total}`);
+        await client.sendFile(userId, audioPath, `pedido.mp3`, `🔊 Seu pedido em áudio!`);
+        await client.sendText(userId, '✅ Para confirmar o pedido, digite *Confirmar*\n❌ Para cancelar, digite *Cancelar*');
+
         userSession.step = 6;
         break;
 
@@ -172,26 +182,11 @@ function start(client) {
             pagamento: userSession.pedido.pagamento
           });
 
-          
-          const listaDeItens = userSession.pedido.itens
-            .map(item => `${item.quantidade} ${item.nome}`)
-            .join(', ');
-          const total = userSession.pedido.valorTotal;
-
-          const textoAudio = `Pedido confirmado! Você pediu ${listaDeItens} com valor total de ${total} reais.`;
-
-          const audioPath = await gerarAudio(textoAudio, `pedido_${userId}`);
-
-          // ✅ Manda texto + áudio:
-          await client.sendText(userId, `🎉 Pedido confirmado! Valor total: R$${total}\nObrigado pelo seu pedido.`);
-          await client.sendFile(userId, audioPath, `pedido.mp3`, `🔊 Seu pedido em áudio!`);
-
+          await client.sendText(userId, `🎉 Pedido confirmado! Valor total: R$${userSession.pedido.valorTotal}\nObrigado pelo seu pedido.`);
           delete sessions[userId];
-
         } else if (msg === 'cancelar') {
           await client.sendText(userId, '🚫 Pedido cancelado! Voltando ao menu inicial...');
-          userSession.step = 0;
-
+          userSession.step = 0; 
         } else {
           await client.sendText(userId, '❌ Digite *Confirmar* ou *Cancelar*.');
         }
