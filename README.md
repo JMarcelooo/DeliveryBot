@@ -50,8 +50,8 @@ Este é um bot de atendimento automatizado para um **delivery de comida**. O bot
 4. **Crie o arquivo `.env`** com as variáveis de ambiente necessárias:
 
     ```env
-    MONGO_URI=mongodb://localhost:27017/delivery_bot
-    GOOGLE_APPLICATION_CREDENTIALS=./chave-gcp.json
+    MONGO_URI
+    GOOGLE_APPLICATION_CREDENTIALS
     ```
 
 5. **Habilite a API Google Cloud Text-to-Speech** e configure a chave de autenticação do Google. 🌍
